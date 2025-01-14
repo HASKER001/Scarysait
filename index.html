@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скримак</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: black;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        #start-text {
+            position: absolute;
+            color: white;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        #screamer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('omg.jpg') no-repeat center center;
+            background-size: cover;
+            display: none;
+        }
+    </style>
+</head>
+<body onclick="playScreamer()">
+
+    <!-- Текст перед скримером -->
+    <div id="start-text">Нажми на экран</div>
+
+    <!-- Скример -->
+    <div id="screamer"></div>
+
+    <!-- Звук -->
+    <audio id="screamer-sound">
+        <source src="kushat.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        function playScreamer() {
+            // Убрать текст «Нажми на экран»
+            document.getElementById("start-text").style.display = "none";
+
+            // Показать скример
+            document.getElementById("screamer").style.display = "block";
+
+            // Проиграть звук
+            const sound = document.getElementById("screamer-sound");
+            sound.play();
+
+            // Убрать скример через 8 секунд
+            setTimeout(function() {
+                document.getElementById("screamer").style.display = "none";
+            }, 8000);
+        }
+    </script>
+
+</body>
+</html>
